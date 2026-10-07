@@ -1,0 +1,147 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #222;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    margin: 15px;
+}
+
+.game {
+    position: relative;
+    width: 400px;
+    height: 650px;
+    margin: auto;
+    overflow: hidden;
+}
+
+#road {
+    position: relative;
+    width: 400px;
+    height: 650px;
+    background: #333;
+    border-left: 8px solid white;
+    border-right: 8px solid white;
+    overflow: hidden;
+}
+
+/* Road lines */
+#road::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -100px;
+    width: 8px;
+    height: 100%;
+    transform: translateX(-50%);
+    background: repeating-linear-gradient(
+        to bottom,
+        white 0px,
+        white 80px,
+        transparent 80px,
+        transparent 160px
+    );
+    animation: roadMove 0.5s linear infinite;
+}
+
+@keyframes roadMove {
+    from {
+        background-position-y: 0;
+    }
+
+    to {
+        background-position-y: 160px;
+    }
+}
+
+/* Player car */
+#player {
+    position: absolute;
+    width: 55px;
+    height: 95px;
+    background: #2196f3;
+    bottom: 25px;
+    left: 172px;
+    border-radius: 12px;
+    z-index: 5;
+}
+
+/* Car windows */
+#player::before {
+    content: "";
+    position: absolute;
+    width: 35px;
+    height: 28px;
+    background: #111;
+    left: 10px;
+    top: 12px;
+    border-radius: 5px;
+}
+
+/* Enemy cars */
+.enemy {
+    position: absolute;
+    width: 55px;
+    height: 95px;
+    background: #f44336;
+    border-radius: 12px;
+    top: -120px;
+}
+
+.enemy1 {
+    left: 70px;
+}
+
+.enemy2 {
+    left: 270px;
+}
+
+.score {
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    z-index: 10;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+#gameOver {
+    display: none;
+    position: absolute;
+    z-index: 20;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    top: 0;
+    left: 0;
+    padding-top: 220px;
+}
+
+#gameOver h2 {
+    font-size: 35px;
+}
+
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    background: #2196f3;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0d8bf2;
+}
+
+.controls {
+    font-size: 18px;
+}
